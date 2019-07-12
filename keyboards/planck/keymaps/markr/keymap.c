@@ -40,6 +40,10 @@ enum planck_keycodes {
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+#define CAPS_SH LSFT_T(KC_CAPSLOCK)
+#define ENT_SH RSFT_T(KC_ENT)
+#define SP_LOWR LT(LOWER, KC_SPC)
+#define SP_RAISE LT(RAISE, KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -57,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_planck_2x2u(
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,     KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,     KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    LSFT_T(KC_CAPSLOCK), KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
-    KC_LCTL, KC_LALT, BACKLIT, KC_LGUI, LT(LOWER, KC_SPC), LT(RAISE, KC_SPC), KC_LEFT, KC_UP, KC_DOWN, KC_RGHT
+    CAPS_SH, KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, ENT_SH,
+    KC_LCTL, KC_LALT, BACKLIT, KC_LGUI, SP_LOWR, SP_RAISE, KC_LEFT, KC_UP, KC_DOWN, KC_RGHT
 ),
 
 
