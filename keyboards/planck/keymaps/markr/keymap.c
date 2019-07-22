@@ -21,8 +21,7 @@ extern keymap_config_t keymap_config;
 
 enum planck_layers {
   _QWERTY,
-  _COLEMAK,
-  _DVORAK,
+  _GREEK,
   _LOWER,
   _RAISE,
   _ADJUST
@@ -30,9 +29,7 @@ enum planck_layers {
 
 enum planck_keycodes {
   QWERTY = SAFE_RANGE,
-  COLEMAK,
-  DVORAK,
-  BACKLIT,
+  GREEK
 };
 
 #define LOWER MO(_LOWER)
@@ -41,6 +38,77 @@ enum planck_keycodes {
 #define ENT_SH RSFT_T(KC_ENT)
 #define SP_LOWR LT(LOWER, KC_SPC)
 #define SP_RAISE LT(RAISE, KC_SPC)
+
+// Greek key codes
+// uppercase
+#define UALPH 0x0391
+#define UBETA 0x0392
+#define UGAMM 0x0393
+#define UDELT 0x0394
+#define UEPSI 0x0395
+#define UZETA 0x0396
+#define UETA  0x0397
+#define UTHET 0x0398
+#define UIOTA 0x0399
+#define UKAPP 0x039A
+#define ULAMB 0x039B
+#define UMU   0x039C
+#define UNU   0x039D
+#define UXI   0x039E
+#define UOMIC 0x039F
+#define UPI   0x03A0
+#define URHO  0x03A1
+#define USIGM 0x03A3
+#define UTAU  0x03A4
+#define UUPSI 0x03A5
+#define UPHI  0x03A6
+#define UCHI  0x03A7
+#define UPSI  0x03A8
+#define UOMEG 0x03A9
+
+// lowercase
+#define LALPH 0x03B1
+#define LBETA 0x03B2
+#define LGAMM 0x03B3
+#define LDELT 0x03B4
+#define LEPSI 0x03B5
+#define LZETA 0x03B6
+#define LETA  0x03B7
+#define LTHET 0x03B8
+#define LIOTA 0x03B9
+#define LKAPP 0x03BA
+#define LLAMB 0x03BB
+#define LMU   0x03BC
+#define LNU   0x03BD
+#define LXI   0x03BE
+#define LOMIC 0x03BF
+#define LPI   0x03C0
+#define LRHO  0x03C1
+#define LSIGM 0x03C3
+#define LTAU  0x03C4
+#define LUPSI 0x03C5
+#define LPHI  0x03C6
+#define LCHI  0x03C7
+#define LPSI  0x03C8
+#define LOMEG 0x03C9
+
+#define FSIGM 0x03C2
+// uppercase tonos
+#define UALTO 0x0386
+#define UEPTO 0x0388
+#define UETTO 0x0389
+#define UIOTO 0x038A
+#define UOMTO 0x038C
+#define UUPTO 0x038E
+#define UOOTO 0x038F
+// lowercase tonos
+#define LALTO 0x03AC
+#define LEPTO 0x03AD
+#define LETTO 0x03AE
+#define LIOTO 0x03AF
+#define LOMTO 0x03CC
+#define LUPTO 0x03CD
+#define LOOTO 0x03CE
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -52,14 +120,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  | Enter|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Alt  |Brite | GUI  |    Space    |    Space    | Left | Down |  Up  |Right |
+ * | Ctrl | Alt  |Greek | GUI  |    Space    |    Space    | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_2x2u(
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,     KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,     KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     CAPS_SH, KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, ENT_SH,
-    KC_LCTL, KC_LALT, BACKLIT, KC_LGUI, SP_LOWR, SP_RAISE, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
+    KC_LCTL, KC_LALT, GREEK, KC_LGUI, SP_LOWR, SP_RAISE, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
+),
+
+
+/* Greek
+ * ,-----------------------------------------------------------------------------------.
+ * | Esc  |   ;  |   ς  |   Ε  |   Ρ  |   Τ  |   Υ  |   Θ  |   Ι  |   Ο  |   Π  | Bksp |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Tab  |   Α  |   Σ  |   Δ  |   Φ  |   Γ  |   Η  |   Ξ  |   Κ  |   Λ  |   ;  |  "   |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | Shift|   Ζ  |   Χ  |   Ψ  |   Ω  |   Β  |   Ν  |   Μ  |   ,  |   .  |   /  | Enter|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Ctrl | Alt  |Qwerty| GUI  |    Space    |    Space    | Left | Down |  Up  |Right |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_GREEK] = LAYOUT_planck_2x2u(
+    KC_ESC,  KC_Q,    UC(FSIGM),    UC(LEPSI),    UC(LRHO),     UC(LTAU),    UC(LUPSI),     UC(LTHET),    UC(LIOTA),    UC(LOMIC),    UC(LPI),    KC_BSPC,
+    KC_TAB,  UC(LALPH),    UC(LSIGM),    UC(LDELT),    UC(LPHI),     UC(LGAMM),    UC(LETA),     UC(LXI),    UC(LKAPP),    UC(LLAMB),    KC_SCLN, KC_QUOT,
+    CAPS_SH, UC(LZETA),    UC(LCHI),    UC(LPSI),    UC(LOMEG),     UC(LBETA),    UC(LNU),     UC(LMU),    KC_COMM, KC_DOT,  KC_SLSH, ENT_SH,
+    KC_LCTL, KC_LALT, QWERTY, KC_LGUI, SP_LOWR, SP_RAISE, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
 ),
 
 
@@ -104,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Reset|      |      |      |      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|      |      |
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -113,17 +200,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_planck_2x2u(
     RESET, _______,  DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
-    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK,  DVORAK,  _______,  _______,
+    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  _______,  _______,  _______,  _______,
     _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, _______, _______, _______,
     _______, _______, _______, _______,     _______     ,     _______     , _______, _______,  _______, _______
 )
 
 };
-
-// #ifdef AUDIO_ENABLE
-//   float plover_song[][2]     = SONG(PLOVER_SOUND);
-//   float plover_gb_song[][2]  = SONG(PLOVER_GOODBYE_SOUND);
-// #endif
 
 uint32_t layer_state_set_user(uint32_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
@@ -133,68 +215,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
-        print("mode just switched to qwerty and this is a huge string\n");
         set_single_persistent_default_layer(_QWERTY);
       }
       return false;
       break;
-    case COLEMAK:
+    case GREEK:
       if (record->event.pressed) {
-        set_single_persistent_default_layer(_COLEMAK);
+        set_single_persistent_default_layer(_GREEK);
       }
       return false;
       break;
-    case DVORAK:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_DVORAK);
-      }
-      return false;
-      break;
-    case BACKLIT:
-      if (record->event.pressed) {
-        register_code(KC_RSFT);
-        #ifdef BACKLIGHT_ENABLE
-          backlight_step();
-        #endif
-        #ifdef KEYBOARD_planck_rev5
-          PORTE &= ~(1<<6);
-        #endif
-      } else {
-        unregister_code(KC_RSFT);
-        #ifdef KEYBOARD_planck_rev5
-          PORTE |= (1<<6);
-        #endif
-      }
-      return false;
-      break;
-//     case PLOVER:
-//       if (record->event.pressed) {
-//         #ifdef AUDIO_ENABLE
-//           stop_all_notes();
-//           PLAY_SONG(plover_song);
-//         #endif
-//         layer_off(_RAISE);
-//         layer_off(_LOWER);
-//         layer_off(_ADJUST);
-//         layer_on(_PLOVER);
-//         if (!eeconfig_is_enabled()) {
-//             eeconfig_init();
-//         }
-//         keymap_config.raw = eeconfig_read_keymap();
-//         keymap_config.nkro = 1;
-//         eeconfig_update_keymap(keymap_config.raw);
-//       }
-//       return false;
-//       break;
-//     case EXT_PLV:
-//       if (record->event.pressed) {
-//         #ifdef AUDIO_ENABLE
-//           PLAY_SONG(plover_gb_song);
-//         #endif
-//         layer_off(_PLOVER);
-//       }
-//       return false;
-//       break;
   }
   return true;
 }
@@ -292,4 +322,8 @@ bool music_mask_user(uint16_t keycode) {
     default:
       return true;
   }
+}
+
+void matrix_init_user(void) {
+    set_unicode_input_mode(UC_LNX); // REPLACE UC_XXXX with the Unicode Input Mode for your OS. See table below.
 }
